@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './css/index.css';
 import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import store from './store';
@@ -10,6 +9,7 @@ import {syncHistoryWithStore} from 'react-router-redux';
 import  {Switch,} from 'react-router-dom';
 import Home from './component/Home';
 import Hero from './component/Hero';
+import './css/bootstrap.css'
 
 const history = syncHistoryWithStore(browserHistory, store);
 
