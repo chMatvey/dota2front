@@ -1,3 +1,19 @@
-ul, li{
-  display: flex;
+ul, li {
+    display: flex;
+}
+
+@media (min-width: 1217px) {
+
+}
+
+@media (max-width: 1217px) and (min-width: 828px) {
+    .hidden-1217 {
+        visibility: hidden;
+    }
+}
+
+@media (max-width: 828px) {
+    .hidden-1217 {
+        visibility: hidden;
+    }
 }

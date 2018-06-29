@@ -1,41 +1,37 @@
 const initialState = [
     {
         "id":"1",
-        "href":"/heroes/abaddon/",
-        "img":"/img/heroes/abaddon/m_icon.jpg",
-        "type":"power",
-        "typeImg":"/img/icon-str.png",
-        "title":"abaddon",
+        "name":"Abaddon",
         "role":"Support-Carry-Durable",
-        "attackType":"melee",
-        "tooltipe":"Abaddon",
-        "meta":2,
-        "position":"3-4",
+        "attack":"melee",
+        "type":"power",
+        "img":"/img/heroes/abaddon/m_icon.jpg",
+        "typeImg":"/img/icon-str.png",
     },
     {
         "id":"1",
-        "href":"/heroes/abaddon/",
-        "img":"/img/heroes/abaddon/m_icon.jpg",
-        "type":"power",
-        "typeImg":"/img/icon-str.png",
-        "title":"abaddon",
+        "name":"Abaddon",
         "role":"Support-Carry-Durable",
-        "attackType":"melee",
-        "tooltipe":"Abaddon",
-        "meta":2,
-        "position":"3-4",
+        "attack":"melee",
+        "type":"power",
+        "img":"/img/heroes/abaddon/m_icon.jpg",
+        "typeImg":"/img/icon-str.png",
     }
 ];
 
-export default function hero(state = initialState, action) {
+export default function hero(state = [], action) {
     switch(action.type){
         case 'ADD_HERO':{
-            state = [];
             return[
                 ...state,
                 action.payload
             ]
         }
+        case 'DELETE_HERO':{
+            state = [];
+            break;
+        }
+        default: break;
     }
     return state
 }
