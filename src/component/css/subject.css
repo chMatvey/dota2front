@@ -11,9 +11,13 @@
 }
 
 .subject-image{
-    width: 70px;
-    margin: 10% auto;
+    width: 56px;
+    margin: 10% -3px;
 }
 
 .subjects-item{
+}
+
+.subject-link{
+
 }

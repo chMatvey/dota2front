@@ -54,19 +54,19 @@ class Subject extends Component{
                 <div class="content-table jumbotron content-subject">
                     <table class="table table-hover">
                         <thead>
-                        <tr>
                             {this.props.sections.map((section) =>
-                            <th><img src={urlData + section.img}/></th>)}
-                        </tr>
+                            <th><img title={section.name} src={urlData + section.img}/></th>)}
                         </thead>
                         <tbody>
                         {this.props.sections.map((section) =>
                         <th>
                             {section.subjects.map((subject) =>
-                            <tr><div class="subjects-item">
-                                <img class="subject-image" src={urlData + subject.img}/>
+                            <div class="subjects-item">
+                                <Link title={subject.name} to={"/items/" + subject.name} class="subject-link">
+                                    <img class="subject-image" src={urlData + subject.img}/>
+                                </Link>
                                 <div hidden={true}></div>
-                            </div></tr>)}>
+                            </div>)}>
                         </th>)}
                         </tbody>
                     </table>
