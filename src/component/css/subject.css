@@ -1,0 +1,19 @@
+.second-header-subject{
+    background-color: #2c3036;
+    height: 10%;
+    width: 93%;
+    margin: 0 auto;
+    background: url("http://i.imgur.com/tQqq3s8.jpg") no-repeat center top;
+}
+
+.content-subject{
+    margin-top: 1%;
+}
+
+.subject-image{
+    width: 70px;
+    margin: 10% auto;
+}
+
+.subjects-item{
+}

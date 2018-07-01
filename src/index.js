@@ -7,9 +7,10 @@ import store from './store';
 import {Router, Route, browserHistory} from 'react-router';
 import {syncHistoryWithStore} from 'react-router-redux';
 import  {Switch,} from 'react-router-dom';
+import './css/bootstrap.css'
 import Home from './component/Home';
 import Hero from './component/Hero';
-import './css/bootstrap.css'
+import Subject from './component/Subject';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -19,6 +20,7 @@ ReactDOM.render(
             <Switch>
                 <Route exact path = "/" component={Home}/>
                 <Route exact path = "/hero" component={Hero}/>
+                <Route exact path = "/subject" component={Subject}/>
             </Switch>
         </Router>
     </Provider>,

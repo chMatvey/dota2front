@@ -11,9 +11,9 @@ class Head extends Component{
                     <li><h1><Link to="/">
                         <img src="http://wallpaperstock.ru/tmp/D/16295_5.jpg"/>
                     </Link></h1></li>
-                    <li><Link to="/hero">Hero</Link></li>
-                    <li><Link to="/subject">Subjects</Link></li>
-                    <li><Link to="/hyde">Hyde</Link></li>
+                    <li><Link to="/hero">Heroes</Link></li>
+                    <li><Link to="/subject">Items</Link></li>
+                    <li><Link to="/hyde">Guides</Link></li>
                     <li><Link to="/signin">Sign in</Link></li>
                     <li><Link to="/signup">Sign up</Link></li>
                     <li class="last-child"><h1><Link to="/">

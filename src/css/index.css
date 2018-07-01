@@ -2,6 +2,16 @@ ul, li {
     display: flex;
 }
 
+table{
+    display: table;
+}
+
+.content-table{
+    width: 90%;
+    margin: 0 auto;
+    height: 100%;
+}
+
 @media (min-width: 1217px) {
 
 }

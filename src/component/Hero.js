@@ -22,7 +22,9 @@ class Hero extends Component {
     }
 
     componentDidMount(){
-        this.addHeroes();
+        if (this.props.heroes.length === 0){
+            this.addHeroes();
+        }
     }
 
     addHeroes(){
@@ -88,7 +90,7 @@ class Hero extends Component {
             <div>
                 <Head/>
                 <ScrollEvent handleScrollCallback={this.handleScrollCallback}/>
-                <div class="second-header">
+                <div class="second-header-hero">
                     <h3 class="hero-list-header">
                         <small>Dota 2 Database</small>
                         <br/>
@@ -111,7 +113,7 @@ class Hero extends Component {
                         <option>Intelligence</option>
                     </select>
                 </nav>
-                <div class="hero-table jumbotron">
+                <div class="content-table jumbotron">
                     <table class="table table-hover">
                         <thead>
                         <tr>
@@ -123,7 +125,7 @@ class Hero extends Component {
                         </tr>
                         </thead>
                         <tbody class="table-active">
-                        {this.props.heroes.map((hero) =>
+                        {this.props.heroes.map((hero)   =>
                             <tr>
                                 <th><Link to={"/hero/" + hero.name.toLowerCase()}>
                                     <img class="hero-image" src={urlData + hero.img}/>
