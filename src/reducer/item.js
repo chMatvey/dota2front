@@ -1,6 +1,6 @@
-export default function characteristic(state = [], action) {
+export default function item(state = [], action) {
     switch(action.type){
-        case 'ADD_CHARACTERISTIC':{
+        case 'ADD_ITEM':{
             state = [];
             return[
                 ...state,

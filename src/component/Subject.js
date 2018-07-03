@@ -62,10 +62,9 @@ class Subject extends Component{
                         <th>
                             {section.subjects.map((subject) =>
                             <div class="subjects-item">
-                                <Link title={subject.name} to={"/items/" + subject.name} class="subject-link">
+                                <Link title={subject.name} to={"/items/" + subject.id} class="subject-link">
                                     <img class="subject-image" src={urlData + subject.img}/>
                                 </Link>
-                                <div hidden={true}></div>
                             </div>)}>
                         </th>)}
                         </tbody>

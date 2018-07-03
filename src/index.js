@@ -12,6 +12,7 @@ import Home from './component/Home';
 import Hero from './component/Hero';
 import Subject from './component/Subject';
 import Characteristic from './component/Characteristic';
+import Item from './component/Item';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -20,9 +21,10 @@ ReactDOM.render(
         <Router history={history}>
             <Switch>
                 <Route exact path = "/" component={Home}/>
-                <Route exact path = "/hero" component={Hero}/>
+                <Route exact path = "/heroes" component={Hero}/>
                 <Route exact path = "/items" component={Subject}/>
                 <Route exact path = "/hero/:id" component={Characteristic}/>
+                <Route exact path = "/items/:id" component={Item}/>
             </Switch>
         </Router>
     </Provider>,

@@ -1,7 +1,10 @@
-export default function characteristic(state = [], action) {
+const initialState = [
+    "https://dota2.ru/img/memes/2018/07/53096.jpg?0"
+];
+
+export default function mem(state = initialState, action) {
     switch(action.type){
-        case 'ADD_CHARACTERISTIC':{
-            state = [];
+        case 'ADD_MEM':{
             return[
                 ...state,
                 action.payload

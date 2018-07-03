@@ -17,7 +17,6 @@ class Characteristic extends Component{
 
     componentDidMount(){
         this.addCharacteristic(this.props.params.id);
-        console.log("lol");
     }
 
     addCharacteristic(id){
@@ -27,7 +26,6 @@ class Characteristic extends Component{
             cache: false,
             success: function (data) {
                 this.props.onAddCharacteristic(data);
-                console.log("data load");
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(this.state.url + id, status, err.toString());
