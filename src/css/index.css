@@ -1,9 +1,5 @@
-ul, li {
+ul, li{
     display: flex;
-}
-
-table{
-    display: table;
 }
 
 .content-table{

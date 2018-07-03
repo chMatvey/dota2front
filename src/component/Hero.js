@@ -22,7 +22,8 @@ class Hero extends Component {
     }
 
     componentDidMount(){
-        if (this.props.heroes.length === 0){
+        if (this.props.heroes.length < 10){
+            this.props.onDeleteHero();
             this.addHeroes();
         }
     }
@@ -125,12 +126,12 @@ class Hero extends Component {
                         </tr>
                         </thead>
                         <tbody class="table-active">
-                        {this.props.heroes.map((hero)   =>
-                            <tr>
-                                <th><Link to={"/hero/" + hero.name.toLowerCase()}>
+                        {this.props.heroes.map((hero) =>
+                            <tr key={hero.id}>
+                                <th><Link to={"/hero/" + hero.id}>
                                     <img class="hero-image" src={urlData + hero.img}/>
                                 </Link></th>
-                                <th><Link to={"/hero/" + hero.name.toLowerCase()}
+                                <th><Link to={"/hero/" + hero.id}
                                           class="hero-name">{hero.name}</Link></th>
                                 <th class="hidden-1217"><span class="span-right">{hero.role}</span></th>
                                 <th class="hidden-1217"><span class="span-right">{hero.attack.name}</span></th>

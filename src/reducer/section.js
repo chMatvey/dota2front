@@ -6,10 +6,6 @@ export default function section(state = [], action) {
                 action.payload
             ]
         }
-        case 'DELETE_SECTION':{
-            state = [];
-            break;
-        }
         default: break;
     }
     return state
