@@ -1,3 +1,9 @@
+.charact-comment{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 @media (min-width: 1217px) {
     .display-flex{
         display: flex;

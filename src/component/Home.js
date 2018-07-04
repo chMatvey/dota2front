@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
 import Head from './part/Head';
+import './css/home.css'
 
 class Home extends Component{
     render(){
         return(
-            <div>
+            <div className="home-page">
                 <Head/>
-                <div>
-
+                <div className="home-content">
+                    <h1 className="home-title">DOTA 2</h1>
+                    <iframe src="http://www.youtube.com/embed/-cSFPIwMEq4?rel=0&hd=1" className="home-iframe"/>
                 </div>
             </div>
         )

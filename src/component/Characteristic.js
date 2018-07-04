@@ -168,6 +168,17 @@ class Characteristic extends Component{
                                     <h3 align="center">История</h3>
                                     <p>{charact.bio}</p>
                                 </div>
+                                <h4 align="center">Комментарии</h4>
+                                <div class="card text-white bg-primary mb-3">
+                                    <div class="card-header">User</div>
+                                    <div class="card-body">
+                                        <p class="card-text">LOL</p>
+                                    </div>
+                                </div>
+                                <div className="charact-comment">
+                                    <textarea className="input-group-text" type="text" placeholder="Поделитесь вашими мыслями..."/>
+                                    <button className="btn btn-primary">Отправить</button>
+                                </div>
                             </div>
                             <div className="hero-info-right flex-direction-column">
                                 {charact.skill.map((skill) =>

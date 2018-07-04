@@ -43,16 +43,16 @@ class Subject extends Component{
         return(
             <div>
                 <Head/>
-                <div class="second-header-subject">
-                    <h3 class="hero-list-header">
+                <div className="second-header-subject">
+                    <h3 className="hero-list-header">
                         <small>Dota 2 Database</small>
                         <br/>
                         All Items<br/>
                         <small>different sections</small>
                     </h3>
                 </div>
-                <div class="content-table jumbotron content-subject">
-                    <table class="table table-hover">
+                <div className="content-table jumbotron content-subject">
+                    <table className="table table-hover">
                         <thead>
                             {this.props.sections.map((section) =>
                             <th><img title={section.name} src={urlData + section.img}/></th>)}
@@ -61,9 +61,9 @@ class Subject extends Component{
                         {this.props.sections.map((section) =>
                         <th>
                             {section.subjects.map((subject) =>
-                            <div class="subjects-item">
+                            <div className="subjects-item">
                                 <Link title={subject.name} to={"/items/" + subject.id} class="subject-link">
-                                    <img class="subject-image" src={urlData + subject.img}/>
+                                    <img className="subject-image" src={urlData + subject.img}/>
                                 </Link>
                             </div>)}>
                         </th>)}

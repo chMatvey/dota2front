@@ -1,0 +1,65 @@
+.mem-page{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.mem-content{
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.mem-img{
+    margin: 1% auto;
+    max-width: 100%;
+}
+
+.mem-comments ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.like-img{
+    height: 50px;
+    width: 70px;
+    max-width: 100%;
+}
+
+.dislike-img{
+    height: 50px;
+    width: 70px;
+    transform: scale(1, -1);
+    max-width: 100%;
+}
+
+.mem-like-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.mem-like-left{
+    display: flex;
+    padding-bottom: 1%;
+    padding-left: 3%;
+}
+
+.mem-like-right{
+    padding-right: 3%;
+    padding-bottom: 1%;
+    display: flex;
+}
+
+.mem-button-like{
+    padding: 1% ;
+    display: flex;
+    flex-direction: column;
+}
+
+.mem-padding-right{
+    padding-right: 10%;
+}

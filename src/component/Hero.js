@@ -91,51 +91,51 @@ class Hero extends Component {
             <div>
                 <Head/>
                 <ScrollEvent handleScrollCallback={this.handleScrollCallback}/>
-                <div class="second-header-hero">
-                    <h3 class="hero-list-header">
+                <div className="second-header-hero">
+                    <h3 className="hero-list-header">
                         <small>Dota 2 Database</small>
                         <br/>
                         All Heroes<br/>
                         <small>Power Agility Intelligence</small>
                     </h3>
                 </div>
-                <nav class="navbar filter">
-                    <input class="btn btn-primary search-by-name" type="text" placeholder="Filter By Name"
+                <nav className="navbar filter">
+                    <input className="btn btn-primary search-by-name" type="text" placeholder="Filter By Name"
                            ref={(input) => {
                                this.findInput = input;
                            }}
                            onChange={this.inputChange.bind(this)}/>
                     <select onChange={this.selectChange.bind(this)} ref={(select) => {
                         this.typeSelect = select
-                    }} class="dropdown-header list-group-item-dark select-type">
+                    }} className="dropdown-header list-group-item-dark select-type">
                         <option>All</option>
                         <option>Power</option>
                         <option>Agility</option>
                         <option>Intelligence</option>
                     </select>
                 </nav>
-                <div class="content-table jumbotron">
-                    <table class="table table-hover">
+                <div className="content-table jumbotron">
+                    <table className="table table-hover">
                         <thead>
                         <tr>
-                            <th scope="col"></th>
+                            <th scope="col"/>
                             <th scope="col">Name</th>
-                            <th class="hidden-1217" scope="col">Role</th>
-                            <th class="hidden-1217" scope="col">Attack</th>
-                            <th class="hidden-1217" scope="col"></th>
+                            <th className="hidden-1217" scope="col">Role</th>
+                            <th className="hidden-1217" scope="col">Attack</th>
+                            <th className="hidden-1217" scope="col"/>
                         </tr>
                         </thead>
-                        <tbody class="table-active">
+                        <tbody className="table-active">
                         {this.props.heroes.map((hero) =>
                             <tr key={hero.id}>
                                 <th><Link to={"/hero/" + hero.id}>
-                                    <img class="hero-image" src={urlData + hero.img}/>
+                                    <img className="hero-image" src={urlData + hero.img}/>
                                 </Link></th>
                                 <th><Link to={"/hero/" + hero.id}
                                           class="hero-name">{hero.name}</Link></th>
-                                <th class="hidden-1217"><span class="span-right">{hero.role}</span></th>
-                                <th class="hidden-1217"><span class="span-right">{hero.attack.name}</span></th>
-                                <th class="hidden-1217"><img class="hero-type-img" src={urlData + hero.type.img}/></th>
+                                <th className="hidden-1217"><span className="span-right">{hero.role}</span></th>
+                                <th className="hidden-1217"><span className="span-right">{hero.attack.name}</span></th>
+                                <th className="hidden-1217"><img className="hero-type-img" src={urlData + hero.type.img}/></th>
                             </tr>
                         )}
                         </tbody>
