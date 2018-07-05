@@ -5,6 +5,7 @@ import sections from './section';
 import characteristic from './characteristic';
 import item from './item';
 import mem from './mem';
+import user from './user'
 
 export default combineReducers({
     routing: routerReducer,
@@ -13,4 +14,5 @@ export default combineReducers({
     characteristic,
     item,
     mem,
+    user,
 })

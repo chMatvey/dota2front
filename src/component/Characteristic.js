@@ -10,9 +10,13 @@ class Characteristic extends Component{
     constructor(props){
         super(props);
         this.state = {
-            url: "http://localhost:8000/get/characteristic?hero_id="
+            url: "http://localhost:8000/get/characteristic?hero_id=",
+            id: 0,
+            isAuth: false,
+            isAdmin: false,
         };
         this.addCharacteristic = this.addCharacteristic.bind(this);
+        this.deleteComment = this.deleteComment.bind(this);
     }
 
     componentDidMount(){
@@ -25,6 +29,7 @@ class Characteristic extends Component{
             dataType: 'json',
             cache: false,
             success: function (data) {
+                this.state.id = data.id;
                 this.props.onAddCharacteristic(data);
             }.bind(this),
             error: function (xhr, status, err) {
@@ -33,10 +38,45 @@ class Characteristic extends Component{
         });
     }
 
+    sendComment(){
+        $.ajax({
+            url: ("http://localhost:8000/add/comment?charact_id=" + this.state.id +
+            "&content=" + this.comment.value),
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                this.props.onAddCharacteristic(data);
+            }.bind(this),
+            error: function (xhr, status, err) {
+                console.error(this.state.url, status, err.toString());
+            }.bind(this)
+        });
+        this.comment.value = "";
+    }
+
+    headUpdate(data){
+        this.state.isAuth = data;
+    }
+
+    deleteComment(id){
+        $.ajax({
+            url: ("http://localhost:8000/delete/comment?charact_id=" + this.state.id +
+                "&comment_id=" + id),
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                this.props.onAddCharacteristic(data);
+            }.bind(this),
+            error: function (xhr, status, err) {
+                console.error(this.state.url, status, err.toString());
+            }.bind(this)
+        });
+    }
+
     render(){
         return(
             <div>
-                <Head/>
+                <Head dataUpdate={this.headUpdate.bind(this)}/>
                 {this.props.characteristics.map((charact) =>
                     <div className="jumbotron content-table" key={charact.id}>
                         <div className="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -169,15 +209,27 @@ class Characteristic extends Component{
                                     <p>{charact.bio}</p>
                                 </div>
                                 <h4 align="center">Комментарии</h4>
-                                <div class="card text-white bg-primary mb-3">
-                                    <div class="card-header">User</div>
-                                    <div class="card-body">
-                                        <p class="card-text">LOL</p>
+                                {charact.comments.map((comment) =>
+                                <div>
+                                    <div className="card text-white bg-primary mb-3">
+                                        <div className="card-header comment-head">
+                                            <div>User</div>
+                                            <button className="btn btn-primary btn-sm" hidden={!this.state.isAdmin}
+                                                    onClick={() =>{
+                                                        this.deleteComment(comment.id)
+                                                    }}>delete</button>
+                                        </div>
+                                        <div className="card-body">
+                                            <p className="card-text">{comment.content}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="charact-comment">
-                                    <textarea className="input-group-text" type="text" placeholder="Поделитесь вашими мыслями..."/>
-                                    <button className="btn btn-primary">Отправить</button>
+                                </div>)}
+                                <div className="charact-comment" hidden={!this.state.isAdmin}>
+                                    <textarea className="input-group-text"  placeholder="Поделитесь вашими мыслями..."
+                                    ref={(textarea) => {
+                                        this.comment = textarea;
+                                    }}/>
+                                    <button className="btn btn-primary" onClick={this.sendComment.bind(this)}>Отправить</button>
                                 </div>
                             </div>
                             <div className="hero-info-right flex-direction-column">

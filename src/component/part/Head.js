@@ -6,9 +6,20 @@ class Head extends Component{
     constructor(props){
         super(props);
         this.state = {
+            dataUpdate: props.dataUpdate,
             isAuth: false,
             login: "User",
+        };
+        this.logout = this.logout.bind(this);
+    }
+
+    componentDidMount(){
+        if (this.state.dataUpdate !== null && typeof this.state.dataUpdate === "function"){
+            this.state.dataUpdate(this.state.isAuth);
         }
+    }
+
+    logout(){
     }
 
     render(){
@@ -21,8 +32,9 @@ class Head extends Component{
                     <li><Link to="/heroes">Heroes</Link></li>
                     <li><Link to="/items">Items</Link></li>
                     <li><Link to="/memes">Memes</Link></li>
-                    <li hidden={this.state.isAuth}><Link to="/signin">Sign in</Link></li>
-                    <li hidden={this.state.isAuth}><Link to="/signup">Sign up</Link></li>
+                    <li hidden={this.state.isAuth}><Link to="/signIn">Sign in</Link></li>
+                    <li hidden={this.state.isAuth}><Link to="/signUp">Sign up</Link></li>
+                    <li hidden={!this.state.isAuth}><Link onClick={this.logout()} to="#">Logout</Link></li>
                     <li hidden={!this.state.isAuth}><Link>{this.state.login}</Link></li>
                     <li className="last-child"><h1><Link to="/">
                         <img src="http://wallpaperstock.ru/tmp/D/16295_5.jpg"/>

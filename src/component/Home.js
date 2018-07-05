@@ -8,7 +8,7 @@ class Home extends Component{
             <div className="home-page">
                 <Head/>
                 <div className="home-content">
-                    <h1 className="home-title">DOTA 2</h1>
+                    <legend align="center"><h1 className="home-title">DOTA 2</h1></legend>
                     <iframe src="http://www.youtube.com/embed/-cSFPIwMEq4?rel=0&hd=1" className="home-iframe"/>
                 </div>
             </div>
