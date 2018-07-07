@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import './css/hero.css';
 import {Link} from 'react-router';
 import $ from 'jquery';
-import ScrollEvent from 'react-onscroll'
+import ScrollEvent from 'react-onscroll';
 
 const urlData = "https://dota2.ru/";
 
@@ -69,7 +69,6 @@ class Hero extends Component {
 
     inputChange() {
         if (this.findInput.value !== ""){
-            console.log("http://localhost:8000/get/heroes/like?name=" + this.findInput.value + "&limit=");
             this.state.url = "http://localhost:8000/get/heroes/like?name=" + this.findInput.value + "&limit=";
         } else{
             this.changeURL();

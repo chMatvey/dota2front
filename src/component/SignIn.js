@@ -3,12 +3,20 @@ import Head from './part/Head'
 import './css/sign.css'
 
 class SignIn extends Component {
+    constructor(props){
+        super(props);
+    }
+
+    btnClick(){
+        this.refs.child.isAuthenticated();
+    }
+
     render() {
         return (
             <div>
-                <Head/>
+                <Head ref="head"/>
                 <div className="jumbotron login-content padding-top">
-                    <form method="post" action="http://localhost:8000/login">
+                    <form>
                         <fieldset>
                             <legend align="center">Авторизация</legend>
                             <div className="form-group">
@@ -19,7 +27,7 @@ class SignIn extends Component {
                                 <label>Пароль</label>
                                 <input type="password" name="password" className="form-control" placeholder="Введите ваш пароль"/>
                             </div>
-                            <button type="submit" className="btn btn-primary">Оправить</button>
+                            <button type="submit" onClick={this.btnClick.bind(this)} className="btn btn-primary">Оправить</button>
                         </fieldset>
                     </form>
                 </div>

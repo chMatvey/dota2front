@@ -1,14 +1,14 @@
-const initialState = [
-    "https://dota2.ru/img/memes/2018/07/53096.jpg?0"
-];
-
-export default function mem(state = [], action) {
+export default function article(state = [], action) {
     switch(action.type){
-        case 'ADD_MEM':{
+        case 'ADD_ARTICLE':{
             return[
                 ...state,
                 action.payload
             ]
+        }
+        case 'DELETE_ARTICLES':{
+            state = [];
+            break;
         }
         default: break;
     }

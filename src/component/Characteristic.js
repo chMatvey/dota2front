@@ -29,7 +29,9 @@ class Characteristic extends Component{
             dataType: 'json',
             cache: false,
             success: function (data) {
-                this.state.id = data.id;
+                this.setState({
+                    id: data.id
+                });
                 this.props.onAddCharacteristic(data);
             }.bind(this),
             error: function (xhr, status, err) {
@@ -40,32 +42,33 @@ class Characteristic extends Component{
 
     sendComment(){
         $.ajax({
-            url: ("http://localhost:8000/add/comment?charact_id=" + this.state.id +
-            "&content=" + this.comment.value),
+            url: ("http://localhost:8000/add/comment?charact_id=" + this.state.id + "&content=" + this.comment.value),
             dataType: 'json',
             cache: false,
             success: function (data) {
                 this.props.onAddCharacteristic(data);
             }.bind(this),
             error: function (xhr, status, err) {
-                console.error(this.state.url, status, err.toString());
+                console.error("http://localhost:8000/add/comment?charact_id=" + this.state.id + "&content=" + this.comment.value, status, err.toString());
             }.bind(this)
         });
         this.comment.value = "";
     }
 
     headUpdate(data){
-        this.state.isAuth = data;
+        this.setState({
+            isAdmin: data.isAdmin,
+            isAuth: data.isAuth
+        })
     }
 
     deleteComment(id){
         $.ajax({
-            url: ("http://localhost:8000/delete/comment?charact_id=" + this.state.id +
-                "&comment_id=" + id),
+            url: ("http://localhost:8000/delete/comment?comment_id=" + id),
             dataType: 'json',
             cache: false,
             success: function (data) {
-                this.props.onAddCharacteristic(data);
+                this.addCharacteristic(this.state.id);
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(this.state.url, status, err.toString());
@@ -210,10 +213,10 @@ class Characteristic extends Component{
                                 </div>
                                 <h4 align="center">Комментарии</h4>
                                 {charact.comments.map((comment) =>
-                                <div>
+                                <div key={comment.id}>
                                     <div className="card text-white bg-primary mb-3">
                                         <div className="card-header comment-head">
-                                            <div>User</div>
+                                            <div>{comment.user.username}</div>
                                             <button className="btn btn-primary btn-sm" hidden={!this.state.isAdmin}
                                                     onClick={() =>{
                                                         this.deleteComment(comment.id)
@@ -224,7 +227,7 @@ class Characteristic extends Component{
                                         </div>
                                     </div>
                                 </div>)}
-                                <div className="charact-comment" hidden={!this.state.isAdmin}>
+                                <div className="charact-comment" hidden={!this.state.isAuth}>
                                     <textarea className="input-group-text"  placeholder="Поделитесь вашими мыслями..."
                                     ref={(textarea) => {
                                         this.comment = textarea;

@@ -10,13 +10,18 @@ class Mem extends Component {
     constructor(props){
         super(props);
         this.state = {
-            url: "http://localhost:8000/get/memes/",
+            url: "http://localhost:8000/get/memes",
             countLike: 1,
             isAdmin: false,
             liked: false
 
         };
         this.addMem = this.addMem.bind(this);
+        this.getMemes = this.getMemes.bind(this);
+    }
+
+    componentDidMount(){
+
     }
 
     componentWillMount(){
@@ -24,6 +29,22 @@ class Mem extends Component {
     }
 
     addMem(id){
+        $.ajax({
+            url: (this.state.url),
+            dataType: 'json',
+            cache: false,
+            success: function (data) {
+                data.forEach((mem) => {
+                    this.props.onAddMem(mem);
+                });
+            }.bind(this),
+            error: function (xhr, status, err) {
+                console.error(this.state.url, status, err.toString());
+            }.bind(this)
+        });
+    }
+
+    getMemes(){
         $.ajax({
             url: (this.state.url),
             dataType: 'json',
@@ -56,7 +77,7 @@ class Mem extends Component {
                     {this.props.memes.map((mem) =>
                         <div className="card border-primary mb-3">
                             <div className="card-header">Admin</div>
-                            <img className="mem-img" src="https://dota2.ru/img/memes/2018/07/53114.jpg?0"/>
+                            <img className="mem-img" src="https://dota2.ru/img/memes/2018/07/53153.jpg?0"/>
                             <div className="mem-like-content">
                                 <div className="mem-like-left">
                                     <button onClick={this.likeClick.bind(this)} className="btn btn-primary mem-button-like">{label}</button>
@@ -76,7 +97,7 @@ class Mem extends Component {
                             <div className="form-group">
                                 <label>Добавьте новый мем</label>
                                 <input type="file" className="form-control-file" id="exampleInputFile" aria-describedby="fileHelp"/>
-                                <small id="fileHelp" className="form-text text-muted">Загрузите изображение и нажмите кнопку оправить</small>
+                                <small id="fileHelp" className="form-text text-muted">Укажите URL картинки и нажмите кнопку отправить</small>
                                 <button className="btn btn-primary">Оправить</button>
                             </div>
                         </form>

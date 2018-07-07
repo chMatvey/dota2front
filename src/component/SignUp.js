@@ -18,7 +18,7 @@ class SignUp extends Component {
                             <div className="form-group">
                                 <label>Пароль</label>
                                 <input type="password" name="password" className="form-control" placeholder="Введите ваш пароль"/>
-                                <small className="form-text text-muted">Пароль должен содерржать не менее 5 символов</small>
+                                <small className="form-text text-muted">Пароль должен содерржать не менее 4 символов</small>
                             </div>
                             <div className="form-group">
                                 <label>Повторите пароль</label>

@@ -1,14 +1,13 @@
-const initialState = {
-    isAuth: false,
-    isAdmin: true,
-    login: "User"
-};
+const initialState = [{"id":2,"username":"admin","authorities":["ADMIN"]}];
 
-export default function user(state = initialState, action) {
+export default function user(state = [], action) {
     switch(action.type){
-        case 'ADD_MEM':{
-            state = action.payload;
-            break;
+        case 'ADD_USER':{
+            state = [];
+            return[
+                ...state,
+                action.payload
+            ]
         }
         default: break;
     }

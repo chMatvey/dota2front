@@ -13,9 +13,9 @@ import Hero from './component/Hero';
 import Subject from './component/Subject';
 import Characteristic from './component/Characteristic';
 import Item from './component/Item';
-import Mem from './component/Mem';
 import SignIn from './component/SignIn';
 import SignUp from './component/SignUp'
+import Article from './component/Article';
 
 const history = syncHistoryWithStore(browserHistory, store);
 
@@ -26,7 +26,7 @@ ReactDOM.render(
                 <Route exact path = "/" component={Home}/>
                 <Route exact path = "/heroes" component={Hero}/>
                 <Route exact path = "/items" component={Subject}/>
-                <Route exact path = "/memes" component={Mem}/>
+                <Route exact path = "/articles" component={Article}/>
                 <Route exact path = "/hero/:id" component={Characteristic}/>
                 <Route exact path = "/items/:id" component={Item}/>
                 <Route exact path = "/signIn" component={SignIn}/>
