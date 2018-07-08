@@ -5,16 +5,35 @@ import './css/sign.css'
 class SignIn extends Component {
     constructor(props){
         super(props);
+        this.state = {
+            alertIsHidden: true
+        }
+    }
+
+    componentWillMount(){
+        let info = document.URL+"";
+        console.log(info);
+        if (info.indexOf("error")+1){
+            this.setState({
+                alertIsHidden: false
+            })
+        }
     }
 
     btnClick(){
-        this.refs.child.isAuthenticated();
+        this.setState({
+            alertIsHidden: true
+        })
     }
 
     render() {
         return (
             <div>
                 <Head ref="head"/>
+                <div hidden={this.state.alertIsHidden} onClick={this.btnClick.bind(this)} className="alert alert-dismissible alert-danger alert-message">
+                    <button type="button" className="close" data-dismiss="alert">&times;</button>
+                    <strong>Invalid username or password!</strong>  Repeat please.
+                </div>
                 <div className="jumbotron login-content padding-top">
                     <form>
                         <fieldset>
@@ -27,7 +46,7 @@ class SignIn extends Component {
                                 <label>Пароль</label>
                                 <input type="password" name="password" className="form-control" placeholder="Введите ваш пароль"/>
                             </div>
-                            <button type="submit" onClick={this.btnClick.bind(this)} className="btn btn-primary">Оправить</button>
+                            <button type="submit" className="btn btn-primary">Оправить</button>
                         </fieldset>
                     </form>
                 </div>

@@ -15,6 +15,8 @@ class Article extends Component {
             offset: 0,
             isAdmin: false,
             url: "http://localhost:8000/get/articles?limit=",
+            isArticleAddHidden: true,
+            isArticleDeleteHidden: true,
         };
         this.deleteArticle = this.deleteArticle.bind(this);
     }
@@ -55,7 +57,9 @@ class Article extends Component {
             dataType: 'json',
             cache: false,
             success: function (data) {
-                alert(data.value);
+                this.setState({
+                    isArticleAddHidden: false
+                });
                 this.getArticle();
             }.bind(this),
             error: function (xhr, status, err) {
@@ -85,9 +89,9 @@ class Article extends Component {
             dataType: 'json',
             cache: false,
             success: function (data) {
-                alert(data.value);
                 this.setState({
-                    offset: 0
+                    offset: 0,
+                    isArticleDeleteHidden: false
                 });
                 this.props.onDeleteArticle();
             }.bind(this),
@@ -101,6 +105,18 @@ class Article extends Component {
         return (
             <div>
                 <Head dataUpdate={this.headUpdate.bind(this)}/>
+                <div hidden={this.state.isArticleAddHidden} className="alert alert-dismissible alert-success alert-message">
+                    <button type="button" className="close" data-dismiss="alert" onClick={() => {
+                        this.setState({isArticleAddHidden: true})
+                    }}>&times;</button>
+                    <strong>Well done!</strong> Your article was successfully loaded
+                </div>
+                <div hidden={this.state.isArticleDeleteHidden} className="alert alert-dismissible alert-secondary alert-message">
+                    <button type="button" className="close" data-dismiss="alert" onClick={() => {
+                        this.setState({isArticleDeleteHidden: true})
+                    }}>&times;</button>
+                    <strong>OK!</strong> Your article was successfully deleted
+                </div>
                 <ScrollEvent handleScrollCallback={this.handleScrollCallback.bind(this)}/>
                 <div className="jumbotron content-table">
                     <div className="charact-comment article-comment" hidden={!this.state.isAdmin}>
